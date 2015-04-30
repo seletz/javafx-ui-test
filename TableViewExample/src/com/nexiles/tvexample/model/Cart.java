@@ -41,7 +41,7 @@ public class Cart {
 		this.cadname = new SimpleStringProperty(cadname);
 		
 		this.copy = new SimpleBooleanProperty(false);
-		this.type = new SimpleStringProperty("model");
+		this.type = new SimpleStringProperty("udf");
 		this.datasheet = new SimpleStringProperty("");
 		this.imageURL = new SimpleStringProperty("");
 		this.created =  new SimpleObjectProperty<LocalDate>(LocalDate.of(1973, 4, 29));
