@@ -29,3 +29,15 @@ I'm on a mac, so I install the needed tools using brew:
 
 
 	brew cask install eclipse-java java javafx-scene-builder
+
+The install site URL for e(fx)clipse is:
+
+	http://download.eclipse.org/efxclipse/updates-released/1.2.0/site
+
+Things To look at later
+-----------------------
+
+Use maven to create a project which is buildable using
+the commandline.
+
+http://zenjava.com/javafx/maven/basic-archetype.html
