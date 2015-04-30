@@ -3,6 +3,7 @@ package com.nexiles.tvexample;
 import java.io.IOException;
 
 import com.nexiles.tvexample.model.Cart;
+import com.nexiles.tvexample.view.CartViewController;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -83,6 +84,9 @@ public class MainApp extends Application {
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
+            
+            CartViewController controller = loader.getController();
+            controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
