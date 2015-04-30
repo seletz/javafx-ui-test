@@ -1,7 +1,7 @@
 package com.nexiles.tvexample.model;
 import java.time.LocalDate;
 
-import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 // import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 // import javafx.beans.property.SimpleIntegerProperty;
@@ -15,7 +15,7 @@ public class Cart {
 	private final StringProperty name;
 	private final StringProperty number;
 	private final StringProperty cadname;
-	private final BooleanProperty copy;
+	private final SimpleBooleanProperty copy;
 	private final StringProperty type;
 	private final StringProperty datasheet;
 	private final StringProperty imageURL;
@@ -31,14 +31,40 @@ public class Cart {
 		this.number = new SimpleStringProperty(number);
 		this.cadname = new SimpleStringProperty(cadname);
 		
-		this.copy = null;
-		
-		//this.copy = new BooleanProperty();
+		this.copy = new SimpleBooleanProperty(false);
 		this.type = new SimpleStringProperty("model");
 		this.datasheet = new SimpleStringProperty("");
 		this.imageURL = new SimpleStringProperty("");
 		this.created =  new SimpleObjectProperty<LocalDate>(LocalDate.of(1973, 4, 29));
 		
+	}
+	
+	public StringProperty idProperty() {
+		return id;
+	}
+	public StringProperty nameProperty() {
+		return name;
+	}
+	public StringProperty numberProperty() {
+		return number;
+	}
+	public StringProperty cadnameProperty() {
+		return cadname;
+	}
+	public StringProperty imageURLProperty() {
+		return imageURL;
+	}
+	public StringProperty typeProperty() {
+		return type;
+	}
+	public StringProperty datasheetProperty() {
+		return datasheet;
+	}
+	public ObjectProperty<LocalDate> createdProperty() {
+		return created;
+	}
+	public SimpleBooleanProperty copyProperty() {
+		return copy;
 	}
 
 	/**
@@ -72,7 +98,7 @@ public class Cart {
 	/**
 	 * @return the copy
 	 */
-	public BooleanProperty getCopy() {
+	public SimpleBooleanProperty getCopy() {
 		return copy;
 	}
 
