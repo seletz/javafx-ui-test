@@ -2,7 +2,11 @@ package com.nexiles.tvexample;
 
 import java.io.IOException;
 
+import com.nexiles.tvexample.model.Cart;
+
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -13,8 +17,32 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    
+    private ObservableList<Cart> cartItems = FXCollections.observableArrayList();
+    
+    public MainApp() {
+    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+    }
 
-    @Override
+    /**
+	 * @return the cartItems
+	 */
+	public ObservableList<Cart> getCartItems() {
+		return cartItems;
+	}
+
+	/**
+	 * @param cartItems the cartItems to set
+	 */
+	public void setCartItems(ObservableList<Cart> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+	@Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Parts Collection");
