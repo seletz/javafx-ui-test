@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="75.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nexiles.tvexample.view.CartCellController">
+<AnchorPane fx:id="anchorPane" prefHeight="75.0" prefWidth="280.0" styleClass="cell-item" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nexiles.tvexample.view.CartCellViewController">
    <children>
       <ImageView fx:id="imageView" fitHeight="43.0" fitWidth="64.0" layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="nameLabel" layoutX="124.0" layoutY="8.0" text="name" />

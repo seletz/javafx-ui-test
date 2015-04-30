@@ -1,0 +1,15 @@
+.cell {
+	-fx-cell-size: 75px;	
+}
+
+.cell-item {
+	-fx-background-color: white;
+}
+
+.label {
+	-fx-padding: "10 0 0 0";
+}
+
+.cell-item > .image-view {
+	-fx-image: url("default-gearwheel.png"); 
+}

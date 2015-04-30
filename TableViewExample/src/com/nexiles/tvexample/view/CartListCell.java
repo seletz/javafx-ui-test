@@ -20,7 +20,7 @@ import com.nexiles.tvexample.model.Cart;
 public class CartListCell extends ListCell<Cart> {
 	static final Logger logger = Logger.getLogger(CartListCell.class.getName());
 
-	private final CartCellController controller;
+	private final CartCellViewController controller;
 	
 	private AnchorPane cellLayout;
 	
@@ -34,7 +34,7 @@ public class CartListCell extends ListCell<Cart> {
             loader.setLocation(location);
             cellLayout = (AnchorPane) loader.load();
             
-            controller = (CartCellController) loader.getController();
+            controller = (CartCellViewController) loader.getController();
             
             logger.info("got controller: " + controller.toString());
         } catch (IOException e) {
@@ -48,14 +48,14 @@ public class CartListCell extends ListCell<Cart> {
 	    logger.info("updateItem()");
 		super.updateItem(cart,  empty);
 
-		setGraphic(cellLayout);
 
 		if (empty) {
 		    logger.info("updateItem() empty is true");
 			return;
 		}
 	    logger.info("updateItem() cart:" + cart.toString());
-		
+		setGraphic(cellLayout);
+
 		controller.setCart(cart);
 	}
 

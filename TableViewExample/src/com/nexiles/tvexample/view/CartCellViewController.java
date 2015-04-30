@@ -23,11 +23,11 @@ import com.nexiles.tvexample.model.Cart;
  * @author seletz
  *
  */
-public class CartCellController {
-	static final Logger logger = Logger.getLogger(CartCellController.class.getName());
+public class CartCellViewController {
+	static final Logger logger = Logger.getLogger(CartCellViewController.class.getName());
 
 	@FXML
-	private AnchorPane anchorPane;
+	private AnchorPane anchorPane;	
 	
 	@FXML
 	private ImageView imageView;
@@ -46,12 +46,9 @@ public class CartCellController {
 	
 	@FXML
 	public void initialize() {
-
 		nameLabel.textProperty().set("");
 		cadnameLabel.textProperty().set("");
 		typeLabel.textProperty().set("");
-		
-	
 	}
 	
 	private void setImage(String name) {
@@ -71,7 +68,7 @@ public class CartCellController {
 		cadnameLabel.textProperty().bind(cart.cadnameProperty());
 		typeLabel.textProperty().bind(cart.typeProperty());
 		
-		setType(cart.typeProperty().get());
+//		setType(cart.typeProperty().get());
 	}
 	
 	public Cart getCart() {

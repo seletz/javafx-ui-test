@@ -4,8 +4,6 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ListCell;
-import javafx.util.Callback;
 
 import com.nexiles.tvexample.MainApp;
 import com.nexiles.tvexample.model.Cart;
@@ -32,12 +30,8 @@ public class CartViewController {
     private void initialize() {
     	logger.fine("initialize");
     	
-    	this.cartList.setCellFactory(new Callback<ListView<Cart>, ListCell<Cart>>() {
-    		@Override
-    		public ListCell<Cart> call(ListView<Cart> p) {
-    			return new CartListCell();
-    		}
-    	});
+    	this.cartList.setCellFactory(cart -> new CartListCell());
+    	
     }
 
     /**
