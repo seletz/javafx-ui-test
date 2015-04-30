@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="75.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nexiles.tvexample.view.CartCellController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="43.0" fitWidth="64.0" layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="nameLabel" layoutX="124.0" layoutY="8.0" text="name" />
+      <Label fx:id="cadnameLabel" layoutX="123.0" layoutY="30.0" text="cadname" />
+      <Label fx:id="typeLabel" layoutX="123.0" layoutY="51.0" text="type" />
+   </children>
+</AnchorPane>

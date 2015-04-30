@@ -1,5 +1,8 @@
 package com.nexiles.tvexample.model;
 import java.time.LocalDate;
+import java.util.logging.Logger;
+
+import com.nexiles.tvexample.view.CartListCell;
 
 import javafx.beans.property.SimpleBooleanProperty;
 // import javafx.beans.property.IntegerProperty;
@@ -11,6 +14,9 @@ import javafx.beans.property.StringProperty;
 
 
 public class Cart {
+	static final Logger logger = Logger.getLogger(Cart.class.getName());
+
+	
 	private final StringProperty id;
 	private final StringProperty name;
 	private final StringProperty number;
@@ -26,6 +32,9 @@ public class Cart {
 	}
 	
 	public Cart(String id, String number, String name, String cadname) {
+		logger.fine("Cart()");
+	    System.out.println("Cart::Cart()");
+
 		this.id = new SimpleStringProperty(id);
 		this.name = new SimpleStringProperty(name);
 		this.number = new SimpleStringProperty(number);
@@ -37,6 +46,7 @@ public class Cart {
 		this.imageURL = new SimpleStringProperty("");
 		this.created =  new SimpleObjectProperty<LocalDate>(LocalDate.of(1973, 4, 29));
 		
+		logger.fine("Cart: " + this.toString());
 	}
 	
 	public StringProperty idProperty() {
@@ -128,5 +138,9 @@ public class Cart {
 	 */
 	public ObjectProperty<LocalDate> getCreated() {
 		return created;
+	}
+	
+	public String toString() {
+		return "Cart<id=" + id.get() + ">";
 	}
 }

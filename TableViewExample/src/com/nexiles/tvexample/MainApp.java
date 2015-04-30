@@ -1,6 +1,10 @@
 package com.nexiles.tvexample;
 
 import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import com.nexiles.tvexample.model.Cart;
 import com.nexiles.tvexample.view.CartViewController;
@@ -16,20 +20,24 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
-    private Stage primaryStage;
-    private BorderPane rootLayout;
-    
-    private ObservableList<Cart> cartItems = FXCollections.observableArrayList();
-    
-    public MainApp() {
-    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
-    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
-    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
-    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
-    	cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
-    }
+	static private FileHandler fileTxt;
+	static private SimpleFormatter formatterTxt;
 
-    /**
+
+	private Stage primaryStage;
+	private BorderPane rootLayout;
+
+	private ObservableList<Cart> cartItems = FXCollections.observableArrayList();
+
+	public MainApp() {
+		cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+		cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+		cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+		cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+		cartItems.add(new Cart("BAUSTEIN_15.PRT", "BAUSTEIN_15.PRT", "Baustein 15", "baustein_15.prt"));
+	}
+
+	/**
 	 * @return the cartItems
 	 */
 	public ObservableList<Cart> getCartItems() {
@@ -44,63 +52,76 @@ public class MainApp extends Application {
 	}
 
 	@Override
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Parts Collection");
+	public void start(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+		this.primaryStage.setTitle("Parts Collection");
 
-        initRootLayout();
+		initRootLayout();
 
-        showPersonOverview();
-    }
+		showCart();
+	}
 
-    /**
-     * Initializes the root layout.
-     */
-    public void initRootLayout() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+	/**
+	 * Initializes the root layout.
+	 */
+	public void initRootLayout() {
+		try {
+			// Load root layout from fxml file.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+			rootLayout = (BorderPane) loader.load();
 
-            // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+			// Show the scene containing the root layout.
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-    /**
-     * Shows the person overview inside the root layout.
-     */
-    public void showPersonOverview() {
-        try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/CartView.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+	/**
+	 * Shows the person overview inside the root layout.
+	 */
+	public void showCart() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/CartView.fxml"));
+			AnchorPane cartView = (AnchorPane) loader.load();
 
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
-            
-            CartViewController controller = loader.getController();
-            controller.setMainApp(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+			// Set person overview into the center of root layout.
+			rootLayout.setCenter(cartView);
 
-    /**
-     * Returns the main stage.
-     * @return
-     */
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
+			CartViewController controller = loader.getController();
+			controller.setMainApp(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	/**
+	 * Returns the main stage.
+	 * @return
+	 */
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
+	public static void main(String[] args) throws IOException {
+		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+		logger.setLevel(Level.FINEST);
+
+		fileTxt = new FileHandler("/tmp/cartapp.txt");
+
+		formatterTxt = new SimpleFormatter();
+		fileTxt.setFormatter(formatterTxt);
+		logger.addHandler(fileTxt);
+		
+		logger.info("Start");
+		logger.fine("foo");
+
+
+		launch(args);
+	}
 }

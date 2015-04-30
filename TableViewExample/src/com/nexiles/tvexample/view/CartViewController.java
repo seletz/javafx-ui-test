@@ -1,5 +1,7 @@
 package com.nexiles.tvexample.view;
 
+import java.util.logging.Logger;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ListCell;
@@ -8,7 +10,10 @@ import javafx.util.Callback;
 import com.nexiles.tvexample.MainApp;
 import com.nexiles.tvexample.model.Cart;
 
+
 public class CartViewController {
+	
+	static final Logger logger = Logger.getLogger(CartViewController.class.getName());
 	
 	@FXML
 	private ListView<Cart> cartList;
@@ -25,6 +30,8 @@ public class CartViewController {
      */
     @FXML
     private void initialize() {
+    	logger.fine("initialize");
+    	
     	this.cartList.setCellFactory(new Callback<ListView<Cart>, ListCell<Cart>>() {
     		@Override
     		public ListCell<Cart> call(ListView<Cart> p) {
